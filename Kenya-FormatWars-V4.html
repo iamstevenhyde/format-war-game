@@ -3195,8 +3195,11 @@ function launchGlobal() {
 
 // --- Init ---
 // Don't auto-boot. Wait for mode selection.
-// Hide mode-select initially (consent screen shows first)
-document.getElementById('mode-select').style.display = 'none';
+// Hide mode-select initially ONLY if user has not yet consented (consent screen shows first).
+// If they came from the sibling edition with a prior-consent flag, leave mode-select visible.
+if (!sessionStorage.getItem('formatWarsConsent')) {
+    document.getElementById('mode-select').style.display = 'none';
+}
 // Hide Kenya elements until mode is chosen
 document.querySelector('.kenya-stripe').style.display = 'none';
 </script>
