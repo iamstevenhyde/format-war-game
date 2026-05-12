@@ -1217,7 +1217,9 @@ try {
     if (prior === 'yes' || prior === 'no') {
         researchConsent = (prior === 'yes');
         document.getElementById('consent-screen').style.display = 'none';
-        document.getElementById('mode-select').style.display = '';
+        // User already chose Kenya on sibling edition. Skip mode-select and auto-launch
+        // the Kenya game directly. setTimeout(0) defers until launchKenya is defined.
+        setTimeout(function(){ if (typeof launchKenya === 'function') launchKenya(); }, 0);
     }
 } catch(e) {}
 

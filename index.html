@@ -4002,12 +4002,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const modeSelect = document.getElementById('mode-select');
     consentScreen.style.display = 'none'; // hide until boot completes
     runBootSequence().then(() => {
-        // If user already consented in a sibling edition this session, honor it and jump to mode select
+        // If user already consented in a sibling edition this session, honor it and jump straight into the US game
         let priorConsent = null;
         try { priorConsent = sessionStorage.getItem('formatWarsConsent'); } catch(e) {}
         if (priorConsent === 'yes' || priorConsent === 'no') {
             researchConsent = (priorConsent === 'yes');
-            modeSelect.classList.remove('hidden');
+            // Skip mode-select and auto-launch the US edition directly
+            if (typeof launchUSFromSelect === 'function') {
+                launchUSFromSelect();
+            } else {
+                modeSelect.classList.remove('hidden');
+            }
         } else {
             consentScreen.style.display = '';
         }
