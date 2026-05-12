@@ -314,8 +314,9 @@
     }
     /* Wrap each company div as a real card */
     #start-screen h2.text-xl + div.grid > div {
-      flex: 0 1 calc(33.333% - 1rem);
-      min-width: 260px;
+      box-sizing: border-box;
+      flex: 0 1 calc(33.333% - 14px);
+      min-width: 240px;
       max-width: 360px;
       background: #fdfdf7;
       border: 1px solid #c6c2a8;
