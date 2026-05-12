@@ -302,16 +302,21 @@
       gap: clamp(1rem, 2.5vw, 2.25rem) !important;
       row-gap: 0.75rem !important;
     }
-    /* Company picker: auto-fit grid replaces grid-cols-2 so 5 items don't orphan */
+    /* Company picker: flex-wrap so the orphan 5th item centers in its row */
     #start-screen h2.text-xl + div.grid {
-      display: grid !important;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)) !important;
+      display: flex !important;
+      flex-wrap: wrap;
+      justify-content: center;
       gap: clamp(0.75rem, 1.5vw, 1.25rem) !important;
       max-width: 1200px;
       margin: 0 auto;
+      grid-template-columns: none !important;
     }
     /* Wrap each company div as a real card */
     #start-screen h2.text-xl + div.grid > div {
+      flex: 0 1 calc(33.333% - 1rem);
+      min-width: 260px;
+      max-width: 360px;
       background: #fdfdf7;
       border: 1px solid #c6c2a8;
       border-radius: 4px;
