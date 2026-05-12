@@ -271,6 +271,84 @@
       }
       #mode-select .inset-panel { min-width: 0 !important; width: 100%; }
     }
+
+    /* ---- Start-screen polish (added 2026-05-12) ---- */
+    #start-screen {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: clamp(16px, 2vh, 32px) clamp(16px, 3vw, 40px);
+    }
+    #start-screen > h1 {
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.03em;
+    }
+    #start-screen > p:not(.text-xs):not(.text-sm) {
+      max-width: 760px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.55;
+    }
+    #start-screen > p.italic.text-xs {
+      max-width: 760px;
+      margin-left: auto;
+      margin-right: auto;
+      opacity: 0.75;
+    }
+    #start-screen #how-to-win {
+      max-width: 760px !important;
+    }
+    /* Game mode toggles: cleaner row, more breathing room */
+    #start-screen .inset-panel:first-of-type .flex.gap-6 {
+      gap: clamp(1rem, 2.5vw, 2.25rem) !important;
+      row-gap: 0.75rem !important;
+    }
+    /* Company picker: auto-fit grid replaces grid-cols-2 so 5 items don't orphan */
+    #start-screen h2.text-xl + div.grid {
+      display: grid !important;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)) !important;
+      gap: clamp(0.75rem, 1.5vw, 1.25rem) !important;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    /* Wrap each company div as a real card */
+    #start-screen h2.text-xl + div.grid > div {
+      background: #fdfdf7;
+      border: 1px solid #c6c2a8;
+      border-radius: 4px;
+      padding: 14px 16px 12px;
+      box-shadow: 2px 2px 0 rgba(0,0,0,0.06);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 230px;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    #start-screen h2.text-xl + div.grid > div:hover {
+      transform: translateY(-2px);
+      box-shadow: 3px 4px 0 rgba(0,0,0,0.12);
+    }
+    /* Company-card heading + stats refinement */
+    #start-screen h2.text-xl + div.grid > div h3 {
+      font-size: 1.05rem;
+      line-height: 1.25;
+      margin-bottom: 0.4rem;
+    }
+    #start-screen h2.text-xl + div.grid > div p.text-sm {
+      font-size: 0.85rem;
+      line-height: 1.4;
+      margin-bottom: 0.45rem;
+    }
+    #start-screen h2.text-xl + div.grid > div p.text-xs.italic {
+      font-size: 0.72rem;
+      letter-spacing: 0.02em;
+      margin-bottom: 0.65rem;
+    }
+    #start-screen h2.text-xl + div.grid > div button.btn {
+      margin-top: auto;
+      padding: 0.55rem 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
     </style>
 </head>
 <body class="flex items-center justify-center min-h-screen p-4">
